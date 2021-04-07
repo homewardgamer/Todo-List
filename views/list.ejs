@@ -22,13 +22,16 @@
     </div>
     <div class="box">
 
-        <% for(var i=0;i<newTask.length;i++) {%>
-
+        <% newTask.forEach(task => {%>
+            
+       
+        <form method="POST" action="/delete">
         <div class="item">
-            <input type="checkbox">
-          <p>  <%= newTask[i] %> </p>
+            <input type="checkbox" name="checkbox" value="<%=task._id%>" onchange="this.form.submit()">
+          <p>  <%= task.name %> </p>
         </div>
-        <% } %>
+        </form>
+             <%}); %>
         <form class="item" action="/" method="POST">
             <input type="text" name="newTask" placeholder="New Task" required autocomplete="off">
             <button type="submit" name="button">+</button>
